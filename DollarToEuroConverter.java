@@ -1,9 +1,13 @@
-public class DollarToEuroConverter extends UnitConverter
+public class DollarToEuroConverter extends CurrencyConverter
 {
-  public DollarToEuroConverter() { }
+  public DollarToEuroConverter() {}
 
   public double convert(double inDollars) {
-    return inDollars*0.85;
+    if (checkInput(inDollars)){
+      return inDollars*0.85;
+    } else{
+      return 1;
+    }
   }
 
   public String toString(){
@@ -13,4 +17,6 @@ public class DollarToEuroConverter extends UnitConverter
   public void print(){
     System.out.println(toString());
   }
+
+  
 };
