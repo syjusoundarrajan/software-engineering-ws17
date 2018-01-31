@@ -1,19 +1,29 @@
-public class EuroToDollarConverter extends CurrencyConverter{
-	public EuroToDollarConverter() {}
+public class EuroToDollarConverter extends ConcreteDecorator{
+	
+  protected iConverter convee;
+
+  public EuroToDollarConverter() {
+    super.convee = null;
+  }
+
+  public EuroToDollarConverter(iConverter convee){
+    super(convee);
+  }
 
 	public double convert(double inEuros) {
-    	if (checkInput(inEuros)){
-        return inEuros*1.18;
-      } else{
-        return 1;
-      }
-  	}
+    if(super.convee != null){
+      return super.convee.convert(inEuros)*1.18;
+    }
+    else{
+      return inEuros*1.18;
+    } 
+  }
 
-  	public String toString(){
-    	return "Euro to Dollar Converter";
-  	}
+	public String toString(){
+  	return "Euro to Dollar Converter";
+	}
 
-  	public void print(){
-    	System.out.println(toString());
-  	}
+	public void print(){
+  	System.out.println(toString());
+	}
 }

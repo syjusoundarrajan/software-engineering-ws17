@@ -1,9 +1,16 @@
-public class CelsiusToFahrenheitConverter extends TemperatureConverter
+public class CelsiusToFahrenheitConverter extends ConcreteDecorator
 {
-  public CelsiusToFahrenheitConverter() { }
+  public CelsiusToFahrenheitConverter() {
+    super.convee = null;
+  }
 
   public double convert(double inCelsius) {
-    return inCelsius*32;
+    if(super.convee != null){
+      return super.convee.convert(inCelsius)*9/5 + 32;
+    }
+    else{
+    return inCelsius*9/5 + 32;
+    }
   }
 
   public String toString(){
